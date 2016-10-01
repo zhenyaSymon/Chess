@@ -21,9 +21,6 @@ public class Pawn extends Figure {
 
     @Override
     public boolean checkMovement(Cell cell,Figure[][] fields) {
-        //  Config.Utils.checkCellExsisting(x,y);
-       // System.out.println("nachalo координат"+this.getC().getY()+this.getC().getIntx());
-        //System.out.println("konec координат"+cell.getY()+cell.getIntx());
         if ((this.getSide()=="white"&&(cell.getY() - this.c.getY() == 1)&&(cell.getIntx()==this.getC().getIntx()))||
         (this.getSide()=="black"&&(-cell.getY() + this.c.getY() == 1)&&(cell.getIntx()==this.getC().getIntx()))){
 

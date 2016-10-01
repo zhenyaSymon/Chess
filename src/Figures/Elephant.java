@@ -15,8 +15,6 @@ public class Elephant extends Figure {
     }
     @Override
     public boolean checkMovement(Cell cell, Figure[][] fields) {
-     //   System.out.println("ewrrrrrrrrrrrrrrrrrrrrrrrrr");
- //       System.out.println("Eto - "+Math.abs(cell.getIntx() - this.getC().getIntx())+"i eto "+Math.abs(cell.getY() - this.getC().getY()));
 
         if (Math.abs(cell.getIntx() - this.getC().getIntx()) == Math.abs(cell.getY() - this.getC().getY())) {
             if(!this.getSide().equals(Game.turnSide()))
@@ -58,7 +56,6 @@ public class Elephant extends Figure {
                 CriticalCells.add(new Cell(Figure.findCoordinate(king.getIntx() - i), king.getY() - i));
         }
 for(int i =0;i<CriticalCells.size();i++) {
-//    System.out.println("ВОТ ОНИ "+CriticalCells.get(i));
 }
         return CriticalCells;
     }

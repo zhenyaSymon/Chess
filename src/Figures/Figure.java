@@ -61,8 +61,6 @@ public abstract class Figure {
     public boolean lastCheckForMove(Cell cell, Figure[][] field) {
         Cell oldcell = this.c;
         boolean result;
-    ///    System.out.println(" сюда ходят "+Game.getField()[8-cell.getY()][cell.getIntx()]);
-      //  System.out.println("eto hodit "+Game.getFigure(this.getC().getIntx(),this.getC().getY()));
         field[8][0] = Game.getField()[8-cell.getY()][cell.getIntx()];
         Game.getField()[8-cell.getY()][cell.getIntx()] = null;
         Game.getField()[8-cell.getY()][cell.getIntx()] = Game.getField()[8-this.getC().getY()][this.getC().getIntx()];
@@ -89,9 +87,8 @@ public abstract class Figure {
 
             field[8][0] = Game.getField()[8-cell.getY()][cell.getIntx()];
             Game.getField()[8-cell.getY()][cell.getIntx()] = null;
-        //    System.out.println("pddsdds"+ Game.getField()[8-cell.getY()][7-cell.getIntx()]);
+
             Game.getField()[8-cell.getY()][cell.getIntx()] = Game.getField()[8-this.getC().getY()][this.getC().getIntx()];
-         //   System.out.println("pddsdds"+ Game.getField()[8-cell.getY()][7-cell.getIntx()]);
             Game.getField()[8-this.getC().getY()][this.getC().getIntx()] = null;
             Game.getField()[8-cell.getY()][cell.getIntx()].setC(cell);
             return true;
@@ -104,14 +101,10 @@ public abstract class Figure {
 
     public abstract boolean checkMovement(Cell cell, Figure[][] fields);
 
-    public static boolean CommonCheckMovement(Cell cell) {
-        //shah
-        // mat
-        return false;
-    }
 
     public ArrayList<Cell> findCriticalCells(Cell king) {
         ArrayList<Cell> CriticalCells = new ArrayList<>();
+
         CriticalCells.add(this.getC());
         return CriticalCells;
     }

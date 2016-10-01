@@ -21,10 +21,6 @@ public class Utils {
         }
 
 
-//        if (!Game.turnSide().equals((Game.getFigure(Figure.Coordinate.valueOf(x).getIntValue(), y).getSide()))) { ДЛЯ ГЛУБОКОЙ ПРОВЕРКИ НА ШАХ ЧТО ЛИ
-//
-//            return false;
-//        }
         for (Figure.Coordinate cord : Figure.Coordinate.values()) {
             if (x.equals(cord.name())) {
                 return true;
@@ -33,14 +29,6 @@ public class Utils {
         }
         return false;
     }
-
-    /*public static String parseInput(String move) {
-        char[] seq = move.toCharArray();
-        if (seq.length != 5) {
-            return "Введите ход в соответствии шаблону";
-        }
-
-    }*/
 
     public static Figure parseFigure(String move) {
 
@@ -54,7 +42,6 @@ public class Utils {
         if (Game.turnSide().equals(Game.getFigure(Figure.Coordinate.valueOf(String.valueOf(move.charAt(0))).getIntValue(), Character.getNumericValue(move.charAt(1))).getSide())&&checkCellExsisting(String.valueOf(move.charAt(0)), Character.getNumericValue(move.charAt(1)))) { //добавить обработку
 
             Figure.Coordinate x = Figure.Coordinate.valueOf(String.valueOf(move.charAt(0)));
-       //     System.out.println("начальная пропарсилась"+(x)+" " +Character.getNumericValue(move.charAt(1)));
             return Game.getFigure(x.getIntValue(), Character.getNumericValue(move.charAt(1)));
         }
         return null;
@@ -64,7 +51,6 @@ public class Utils {
 
 
         if (checkCellExsisting(String.valueOf(move.charAt(3)), Character.getNumericValue(move.charAt(4)))) {
-        //    System.out.println("chlen");
             if(Game.getFigure(Figure.Coordinate.valueOf(String.valueOf(move.charAt(3))).getIntValue(), Character.getNumericValue(move.charAt(4)))!=null){
 
             if (Game.getFigure(Figure.Coordinate.valueOf(String.valueOf(move.charAt(3))).getIntValue(),Character.getNumericValue(move.charAt(4))).getSide().equals(Game.turnSide())) {
@@ -73,7 +59,6 @@ public class Utils {
             }
             }
 
-       //     System.out.println("конечная пропарсилась"+Figure.Coordinate.valueOf(String.valueOf(move.charAt(3)))+" " +Character.getNumericValue(move.charAt(4)));
             return new Cell(Figure.Coordinate.valueOf(String.valueOf(move.charAt(3))), Character.getNumericValue(move.charAt(4)));
         }
         return null;
@@ -97,17 +82,13 @@ public class Utils {
             for (int j = 0; j < 8; j++) {
                 if (Game.getField()[i][j] == null) { continue;}
                     if ((!Game.getField()[i][j].getSide().equals(Game.turnSide()))) {
-                      //  System.out.println(king);
-                  //      System.out.println("ПЕРВЫЙ УРОВЕНЬ");
                         if (Game.getField()[i][j].checkMovement(king.getC(), Game.getField())) {
-                     //       System.out.println("ВТОРОЙ УРОВЕНЬ");
                             Game.setCheck(1);
                             return true;
                         } else {
                             Game.setCheck(0);
                         }
                     }
-                    //return false;
 
             }
         }
@@ -115,15 +96,7 @@ public class Utils {
         return false;
     }
 
-  /*  public static boolean CheckTracker(Figure figure) { //переделать!
-        if (Game.getCheck() == 1) {
-            if (figure instanceof King) {
-                return true;
-            }
-        }
-        System.out.println("Вам обьявлен шах, защититесь!");
-        return false;
-    }*/
+
 
     public static boolean Mat() {
         if (checkMovesForCheck(kingFounding())) return false;
@@ -288,6 +261,5 @@ public class Utils {
         Game.getField()[7][5] = new Elephant(Figure.Side.white,new Cell(Figure.Coordinate.F,1));
         Game.getField()[7][6] = new Horse(Figure.Side.white,new Cell(Figure.Coordinate.G,1));
         Game.getField()[7][7] = new Rook(Figure.Side.white,new Cell(Figure.Coordinate.G,1));
-      //  System.out.println(Game.getField()[7][7].getSide());
     }
 }
